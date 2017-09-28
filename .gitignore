@@ -1,0 +1,16 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+# Thumbnails
+._*
+id_rsa
+node_modules
+.idea/
+home/.vim/backup/*
+!home/.vim/backup/.gitignore
+home/.vim/temp/*
+!home/.vim/temp/.gitignore
+home/.vim/.netrwhist
+home/.vim/bundle/*
+!home/.vim/bundle/.gitignore
+!home/.vim/bundle/Vundle.vim
