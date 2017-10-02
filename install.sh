@@ -201,9 +201,10 @@ if [[ "$CURRENTSHELL" != "/usr/local/bin/zsh" ]]; then
   ok
 fi
 
-# if [[ ! -d "./oh-my-zsh/custom/themes/powerlevel9k" ]]; then
-#   git clone https://github.com/bhilburn/powerlevel9k.git oh-my-zsh/custom/themes/powerlevel9k
-# fi
+if [[ ! -d "./oh-my-zsh/custom/themes/dracula" ]]; then
+  git clone https://github.com/dracula/zsh.git oh-my-zsh/custom/themes/dracula
+  ln -s /Users/$USER/.dotfiles/oh-my-zsh/custom/themes/dracula/dracula.zsh-theme oh-my-zsh/themes/dracula.zsh-theme
+fi
 
 bot "creating symlinks for project dotfiles..."
 pushd home > /dev/null 2>&1
