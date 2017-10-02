@@ -323,10 +323,10 @@ sudo defaults write /Library/Preferences/com.apple.alf stealthenabled -int 1
 
 # Reload the firewall
 # (uncomment if above is not commented out)
-launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist
+# launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 sudo launchctl unload /System/Library/LaunchDaemons/com.apple.alf.agent.plist
 sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
-launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
+# launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 
 # Disable IR remote control
 sudo defaults write /Library/Preferences/com.apple.driver.AppleIRController DeviceEnabled -bool false
@@ -477,8 +477,8 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 ################################################
 bot "Standard System Changes"
 ################################################
-running "always boot in verbose mode (not MacOS GUI mode)"
-sudo nvram boot-args="-v";ok
+# running "always boot in verbose mode (not MacOS GUI mode)"
+# sudo nvram boot-args="-v";ok
 
 running "allow 'locate' command"
 sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist > /dev/null 2>&1;ok
@@ -768,9 +768,9 @@ running "Don’t automatically rearrange Spaces based on most recent use"
 defaults write com.apple.dock mru-spaces -bool false;ok
 
 running "Remove the auto-hiding Dock delay"
-defaults write com.apple.dock autohide-delay -float 0;ok
+defaults write com.apple.dock autohide-delay -float 0.05;ok
 running "Remove the animation when hiding/showing the Dock"
-defaults write com.apple.dock autohide-time-modifier -float 0;ok
+defaults write com.apple.dock autohide-time-modifier -float 0.5;ok
 
 running "Automatically hide and show the Dock"
 defaults write com.apple.dock autohide -bool true;ok
