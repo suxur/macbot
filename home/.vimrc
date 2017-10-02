@@ -1,17 +1,3 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Must Have
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme solarized
-" syntax on " syntax highlighting on
-syntax enable
-let g:solarized_termtrans = 1
-call togglebg#map("<F5>")
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vundle
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -41,7 +27,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " visual undo list
 Plugin 'sjl/gundo.vim'
 " Plugin 'majutsushi/tagbar'
-" markdown preview: opens browser with live reload when vim opens .md
+" markdown preview: opens bsolarizedrowser with live reload when vim opens .md
 Plugin 'suan/vim-instant-markdown'
 Plugin 'godlygeek/tabular'
 " language tools
@@ -54,6 +40,7 @@ Plugin 'digitaltoad/vim-pug'
 " plugins from http://vim-scripts.org/vim/scripts.html
 Plugin 'node.js'
 Plugin 'SuperTab'
+Plugin 'dracula/vim'
 " Git plugin not hosted on GitHub
 " Plugin 'git://git.wincent.com/command-t.git'
 " git repos on your local machine (i.e. when working on your own plugin)
@@ -83,6 +70,12 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Must Have
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" syntax on " syntax highlighting on
+syntax enable
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -114,6 +107,22 @@ set sessionoptions+=winpos " What should be saved during sessions being saved
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim UI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set t_Co=256
+colorscheme dracula
+set guifont=Hack:h14
+set linespace=16
+set guioptions-=e
+
+" Disable GUI Scrollbars
+set guioptions-=l
+set guioptions-=L
+set guioptions-=r
+set guioptions-=R
+
+hi LineNr guibg=bg
+set foldcolumn=1
+hi foldcolumn guibg=bg
+
 set lsp=0 " space it out a little more (easier to read)
 set wildmenu " turn on wild menu
 set wildmode=list:longest " turn on wild menu in special format (long format)
@@ -170,8 +179,8 @@ set preserveindent " but above all -- follow the conventions laid before us
 set ignorecase " case insensitive by default
 set smartcase " if there are caps, go case-sensitive
 set completeopt=menu,longest,preview " improve the way autocomplete works
-set cursorcolumn " show the current column
-set cursorline
+" set cursorcolumn " show the current column
+" set cursorline
 " hi CursorLine term=underline ctermbg=008 guibg=#493a35
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -276,8 +285,8 @@ let NERDTreeIgnore=['\.DS_Store$']
 " auto open if no file sent as arg
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-" Toggle NERDtree with C-n
-map ,n <plug>NERDTreeTabsToggle<CR>
+" Toggle NERDtree with Cmd+1
+nmap <D-1> :NERDTreeTabsToggle<cr>
 " Autoclose if only NERDtree is left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
@@ -306,3 +315,10 @@ let g:syntastic_pug_checkers = ['jade','pug']
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sneak#streak = 1
 let g:airline_theme='bubblegum'
+
+
+" Auto Commands
+augroup autosourcing
+    autocmd!
+    autocmd BufWritePost .vimrc source %
+augroup END
