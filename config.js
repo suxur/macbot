@@ -60,7 +60,10 @@ module.exports = {
     ],
     npm: [
         'bower',
+        'exp',
         'gulp',
+        'npm',
+        'react-native-cli',
         'vtop'
     ]
 };

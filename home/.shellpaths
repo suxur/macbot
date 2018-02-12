@@ -1,8 +1,7 @@
-#My Scripts
+# My Scripts
 export PATH=$PATH:.
-#export PATH=$PATH:~/.dotfiles/scripts
 
-#Brew
+# Brew
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
 
@@ -25,3 +24,6 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools
 
 # MacVim
 export PATH=/Applications/MacVim.app/Contents/bin:$PATH
+
+# Composerr
+export PATH=$HOME/.composer/vendor/bin:$PATH
